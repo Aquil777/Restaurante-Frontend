@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import './SpecialsItem.css';
 
 interface Props {
@@ -23,7 +24,7 @@ function SpecialsItem({ item }: { item: Props }) {
           <p>{item.content}</p>
         </div>
         <div className="col-lg-4 text-center order-1 order-lg-2">
-          <img src={item.image} alt={item.title} className="img-fluid" />
+          <Image src={item.image} alt={item.title} className="img-fluid" />
         </div>
       </div>
     </div>

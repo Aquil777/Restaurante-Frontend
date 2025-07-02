@@ -5,10 +5,11 @@ import 'glightbox/dist/css/glightbox.css';
 import type { Metadata } from "next";
 import { Playfair_Display } from 'next/font/google'
 import "./globals.css";
+import dynamic from 'next/dynamic';
 
-import TopBar from "../components/TopBar";
-import Header from '../components/Header';
-import BackToTop from '../components/BackToTop';
+const BackToTop = dynamic(() => import('../components/BackToTop'), { ssr: false });
+const TopBar = dynamic(() => import('../components/TopBar'), { ssr: false });
+const Header = dynamic(() => import('../components/Header'), { ssr: false });
 import Footer from './sections/Footer';
 
 const playfair = Playfair_Display({

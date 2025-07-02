@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from 'react'
 import './navbar.css'
 import { useRouter, usePathname } from 'next/navigation'
@@ -20,11 +20,9 @@ function Navbar() {
         setScroll(window.scrollY)
       }
     }
-
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', handleScroll)
     }
-
     return () => {
       if (typeof window !== 'undefined') {
         window.removeEventListener('scroll', handleScroll)
@@ -48,7 +46,7 @@ function Navbar() {
       if (elementPosition !== undefined && offset !== undefined) {
         window.scrollTo({
           top: elementPosition - offset,
-          behavior: 'smooth'
+          behavior: 'smooth',
         })
       }
     } else {
@@ -81,10 +79,7 @@ function Navbar() {
   if (!isClient) return null
 
   return (
-    <nav
-      id="navbar"
-      className={`navbar order-last order-lg-0 ${open ? 'navbar-mobile' : ''}`}
-    >
+    <nav id="navbar" className={`navbar order-last order-lg-0 ${open ? 'navbar-mobile' : ''}`}>
       <ul>
         {navlist.map((nav) => (
           <li key={nav.id}>
@@ -93,20 +88,13 @@ function Navbar() {
               className={`nav-link scrollto ${nav.active ? 'active' : ''}`}
               onClick={() => handleScrollTo(nav.target)}
             >
-              {nav.name === 'Home' ? (
-                <i className="bi bi-house-door-fill"></i>
-              ) : (
-                nav.name
-              )}
+              {nav.name === 'Home' ? <i className="bi bi-house-door-fill"></i> : nav.name}
             </a>
           </li>
         ))}
       </ul>
 
-      <i
-        className={`bi ${open ? 'bi-x' : 'bi-list'} mobile-nav-toggle`}
-        onClick={handleToggleMenu}
-      ></i>
+      <i className={`bi ${open ? 'bi-x' : 'bi-list'} mobile-nav-toggle`} onClick={handleToggleMenu}></i>
     </nav>
   )
 }

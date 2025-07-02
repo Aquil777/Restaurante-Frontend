@@ -3,28 +3,33 @@ import React, { useState, useEffect } from 'react'
 import './backToTop.css'
 
 function BackToTop() {
-  const [scroll, setScroll] = useState(0);
-  const [isClient, setIsClient] = useState(false);
+  const [scroll, setScroll] = useState(0)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    // Marca que estamos no cliente (browser)
-    setIsClient(true);
-
+    setIsClient(true)
     const handleScroll = () => {
-      setScroll(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      if (typeof window !== 'undefined') {
+        setScroll(window.scrollY)
+      }
+    }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll)
+    }
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
 
   const backToTop = () => {
     if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
-  };
+  }
 
-  if (!isClient) return null; // Evita renderizar no servidor
+  if (!isClient) return null
 
   return (
     <a
@@ -33,7 +38,7 @@ function BackToTop() {
     >
       <i className="bi bi-arrow-up-short"></i>
     </a>
-  );
+  )
 }
 
-export default BackToTop;
+export default BackToTop

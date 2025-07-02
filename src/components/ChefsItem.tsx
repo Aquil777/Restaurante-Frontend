@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image';
 import './chefsItem.css'
 
 interface props {
@@ -13,7 +14,7 @@ function ChefsItem({item} : {item: props}) {
   return (
     <div className="col-lg-4 col-md-6">
         <div className="member" data-aos="zoom-in" data-aos-delay={item.delay}>
-            <img src={item.photo} className="img-fluid" alt="" />
+            <Image src={item.photo} className="img-fluid" alt="" />
             <div className="member-info">
                 <div className="member-info-content">
                     <h4>{item.name}</h4>

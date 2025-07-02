@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image';
 import './eventsItem.css'
 
 interface props {
@@ -15,7 +16,7 @@ function EventsItem({item}: {item: props}) {
   return (
     <div className="row event-item">
         <div className="col-lg-6">
-            <img src={item.image} alt="" className='img-fluid' />
+            <Image src={item.image} alt="" className='img-fluid' />
         </div>
         <div className="col-lg-6 pt-4 pt-lg-0 content">
             <h3>{item.title}</h3>

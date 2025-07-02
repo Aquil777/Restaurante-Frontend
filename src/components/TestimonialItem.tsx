@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image';
 import './testimonialItem.css'
 
 interface Props {
@@ -17,7 +18,7 @@ function TestimonialItem({item}: {item: Props}) {
             {item.content}
             <i className="bx bxs-quote-alt-right quote-icon-right"></i>
         </p>
-        <img src={item.avatar} className="testimonial-img" alt="" />
+        <Image src={item.avatar} className="testimonial-img" alt="" />
         <h3>{item.client}</h3>
         <h4>{item.position}</h4>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import './MenuItem.css'
+import Image from 'next/image';
 import Link from 'next/link'
 
 type Item = {
@@ -13,7 +14,7 @@ type Item = {
 function MenuItem({item}: {item: Item}) {
   return (
     <div className="col-lg-6 menu-item">
-        <img src={item.preview} className="menu-img" alt="" />
+        <Image src={item.preview} className="menu-img" alt="" />
         <div className="menu-content">
             <Link href={`/menu/${item.id}`}>{item.name}</Link>
             <span>${item.price}</span>
