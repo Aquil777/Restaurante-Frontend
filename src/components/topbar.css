@@ -1,0 +1,28 @@
+/* TopBar.css */
+
+.topbar {
+    height: 40px;
+    font-size: 14px;
+    transition: all 0.5s ease-in-out;
+    z-index: 996;
+    position: relative;
+    background-color: transparent; /* se precisar */
+  }
+  
+  .topbar-scrolled {
+    top: -40px;
+    position: relative;
+  }
+  
+  .text-gold {
+    color: #d9ba85;
+  }
+  
+  .languages .separator {
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 10px;
+  }
+  
+  .languages a {
+    color: rgba(255, 255, 255, 0.5);
+  }  
