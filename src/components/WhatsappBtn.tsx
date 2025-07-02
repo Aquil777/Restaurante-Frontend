@@ -14,8 +14,10 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   label = 'Send via WhatsApp',
 }) => {
   const handleClick = () => {
-    const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+    if (typeof window !== 'undefined') {
+      const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
   };
 
   return (

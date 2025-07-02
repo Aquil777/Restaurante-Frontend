@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react'
 import './navbar.css'
 import { useRouter, usePathname } from 'next/navigation'
@@ -8,57 +9,76 @@ function Navbar() {
   const pathname = usePathname()
   const [navlist, setNavList] = useState(navbar)
   const [open, setOpen] = useState(false)
-  const [scroll, setScroll] = useState(0);
+  const [scroll, setScroll] = useState(0)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
+
     const handleScroll = () => {
-      setScroll(window.scrollY)
+      if (typeof window !== 'undefined') {
+        setScroll(window.scrollY)
+      }
     }
-    window.addEventListener('scroll', handleScroll)
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll)
+    }
+
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll)
+      }
     }
-  }, [scroll]);
+  }, [])
 
   const handleToggleMenu = () => {
     setOpen(!open)
   }
 
   const handleScrollTo = (section: string) => {
-    let header: HTMLElement | null = document.querySelector('#header');
-    let offset = header?.offsetHeight;
-    let targetEl: HTMLElement | null = document.querySelector('#' + section);
-    if(pathname === '/hero') {
-      let elementPosition = targetEl?.offsetTop;
-      window.scrollTo({
-        top: elementPosition! - offset!,
-        behavior: 'smooth'
-      });
-    }else {
-      router.push(`#${section}`);
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
+
+    let header: HTMLElement | null = document.querySelector('#header')
+    let offset = header?.offsetHeight
+    let targetEl: HTMLElement | null = document.querySelector('#' + section)
+
+    if (pathname === '/hero') {
+      let elementPosition = targetEl?.offsetTop
+      if (elementPosition !== undefined && offset !== undefined) {
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: 'smooth'
+        })
+      }
+    } else {
+      router.push(`#${section}`)
     }
   }
 
   const handleNavActive = () => {
-    const position = scroll + 200;
-  
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
+
+    const position = scroll + 200
+
     const updatedNavList = navlist.map((nav) => {
-      const targetSection = document.querySelector(`#${nav.target}`) as HTMLElement;
+      const targetSection = document.querySelector(`#${nav.target}`) as HTMLElement
       const isActive =
         targetSection &&
         position >= targetSection.offsetTop &&
-        position <= targetSection.offsetTop + targetSection.offsetHeight;
-  
-      return { ...nav, active: !!isActive };
-    });
-  
-    setNavList(updatedNavList);
-  };
-  
+        position <= targetSection.offsetTop + targetSection.offsetHeight
+
+      return { ...nav, active: !!isActive }
+    })
+
+    setNavList(updatedNavList)
+  }
 
   useEffect(() => {
-    handleNavActive();
-  }, [scroll]);
+    handleNavActive()
+  }, [scroll])
+
+  if (!isClient) return null
 
   return (
     <nav
@@ -84,10 +104,9 @@ function Navbar() {
       </ul>
 
       <i
-         className={`bi ${open ? 'bi-x' : 'bi-list'} mobile-nav-toggle`}
-         onClick={handleToggleMenu}
-     ></i>
-
+        className={`bi ${open ? 'bi-x' : 'bi-list'} mobile-nav-toggle`}
+        onClick={handleToggleMenu}
+      ></i>
     </nav>
   )
 }

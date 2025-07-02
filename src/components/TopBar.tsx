@@ -1,19 +1,32 @@
-"use client"
+'use client'
 import React, { useState, useEffect } from 'react'
-import './topbar.css' // Vamos criar esse arquivo
+import './topbar.css'
 
 function TopBar() {
   const [scroll, setScroll] = useState(0);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
     const handleScroll = () => {
-      setScroll(window.scrollY)
+      if (typeof window !== 'undefined') {
+        setScroll(window.scrollY)
+      }
     }
-    window.addEventListener('scroll', handleScroll)
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll)
+    }
+
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll)
+      }
     }
-  }, [scroll]);
+  }, []); // ✅ array de dependências vazio
+
+  if (!isClient) return null;
 
   return (
     <div
@@ -48,4 +61,4 @@ function TopBar() {
   )
 }
 
-export default TopBar
+export default TopBar;

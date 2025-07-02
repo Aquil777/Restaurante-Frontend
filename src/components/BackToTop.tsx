@@ -1,11 +1,15 @@
 'use client'
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './backToTop.css'
 
 function BackToTop() {
   const [scroll, setScroll] = useState(0);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // Marca que estamos no cliente (browser)
+    setIsClient(true);
+
     const handleScroll = () => {
       setScroll(window.scrollY);
     };
@@ -15,8 +19,12 @@ function BackToTop() {
   }, []);
 
   const backToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
+
+  if (!isClient) return null; // Evita renderizar no servidor
 
   return (
     <a
