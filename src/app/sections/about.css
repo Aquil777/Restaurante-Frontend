@@ -1,3 +1,7 @@
+:root {
+  --yellow: #cda45e;
+}
+
 .about {
     background: url('../../../public/assets/images/about-bg.jpg') center center;
     background-size: cover;
@@ -9,7 +13,7 @@
     content: '';
     background: rgba(0,0,0,0.8);
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -35,21 +39,21 @@
     height: 60px;
     z-index: 1;
     content: '';
-    border-left: 5px solid #cda45e;
-    border-top: 5px solid #cda45e;
+    border-left: 5px solid var(--yellow);
+    border-top: 5px solid var(--yellow);
     transition: 0.5s;
 }
 
 .about .about-img::after {
     position: absolute;
-    right:20px;
-    bottom:20px;
-    width:60px;
-    height:60px;
-    z-index:2;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 2;
     content: '';
-    border-right: 5px solid #cda45e;
-    border-bottom: 5px solid #cda45e;
+    border-right: 5px solid var(--yellow);
+    border-bottom: 5px solid var(--yellow);
     transition: 0.5s;
 }
 
@@ -58,13 +62,13 @@
 }
 
 .about .about-img:hover::before {
-    left:10px;
-    top:10px;
+    left: 10px;
+    top: 10px;
 }
 
 .about .about-img:hover::after {
-    right:10px;
-    bottom:10px;
+    right: 10px;
+    bottom: 10px;
 }
 
 .about .content {
@@ -84,7 +88,6 @@
     line-height: 1.6;
 }
 
-
 .about .content ul {
     list-style: none;
     padding: 0;
@@ -97,7 +100,7 @@
 .about .content ul i {
     font-size: 20px;
     padding-right: 4px;
-    color:#cda45e;
+    color: var(--yellow);
 }
 
 .about .content p:last-child {

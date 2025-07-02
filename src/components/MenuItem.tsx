@@ -1,5 +1,5 @@
 import React from 'react'
-import './MenuItem.css'
+import './menuItem.css'
 import Image from 'next/image';
 import Link from 'next/link'
 

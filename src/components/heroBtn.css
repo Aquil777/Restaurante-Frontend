@@ -1,3 +1,7 @@
+:root {
+  --yellow: var(--yellow);
+}
+
 #hero .btn-hero {
     font-size: 13px;
     font-weight: 600;
@@ -10,10 +14,10 @@
     line-height: 1;
     color: #fff;
     cursor: pointer;
-    border: 2px solid #cda45e;
+    border: 2px solid var(--yellow);
 }
 
 #hero .btn-hero:hover {
-    background: #cda45e;
+    background: var(--yellow);
     color: white;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import './HeroBtn.css'
+import './heroBtn.css'
 
 function HeroBtn({ name, target }: { name: string, target: string }) {
   const handleScrollTo = (section: string) => {

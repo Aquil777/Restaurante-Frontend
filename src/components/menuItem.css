@@ -1,3 +1,7 @@
+:root {
+  --yellow: var(--yellow);
+}
+
 .menu .menu-item {
     margin-top: 50px;
 }
@@ -39,7 +43,7 @@
 }
 
 .menu .menu-content a:hover {
-    color: #cda45e;
+    color: var(--yellow);
 }
 
 .menu .menu-content span {
@@ -48,7 +52,7 @@
     z-index: 3;
     padding: 0 10px;
     font-weight: 600;
-    color: #cda45e;
+    color: var(--yellow);
 }
 
 .menu .menu-ingredients {

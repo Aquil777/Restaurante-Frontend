@@ -1,5 +1,5 @@
 import React from 'react'
-import './AppBtn.css'
+import './appBtn.css'
 
 function AppBtn({ name }: { name: string }) {
 
