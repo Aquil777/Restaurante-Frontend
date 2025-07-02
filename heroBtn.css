@@ -1,0 +1,23 @@
+:root {
+  --yellow: var(--yellow);
+}
+
+#hero .btn-hero {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: 0.3s;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid var(--yellow);
+}
+
+#hero .btn-hero:hover {
+    background: var(--yellow);
+    color: white;
+}
